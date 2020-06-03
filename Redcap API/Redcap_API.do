@@ -5,7 +5,7 @@ file close _all
 set more off
 
 *** Import secret API key
-file open text using APIKEY_redcap.txt, read text // Txt file containing secret API key
+file open text using APIKEY_redcap.txt, read text // Txt file containing API key
 file read text token // Store API key as local 'token'
 
 *** cURL Settings (update to match your system and REDCap)
@@ -20,7 +20,7 @@ shell  `curlpath' 	///
 	--form content=record 	///
 	--form format=csv 		///
 	--form type=flat 		///
-	--form filterLogic="[ppgl]='1' or [algo_9l]='1'" ///
+	/// --form filterLogic="[included]='1' and [disease]='1'" /// Optional. Specify which observations to download.
 	`apiurl'
 
 *** Convert CSV file to Stata format
@@ -36,7 +36,7 @@ Delete the first 7 lines in the do-file (everything before the first "label defi
 Save in same folder as this do-file.
 Repeat these steps every time REDCap database has been changed.
 */
-do RedcapValuelabel.do // Comment out to disable
+do RedcapValuelabel.do
 
 ** Save
 save `outfile'.dta, replace
