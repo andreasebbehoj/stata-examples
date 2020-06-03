@@ -38,7 +38,7 @@ Rename the do file "RedcapValuelabel.do".
 Delete the first 7 lines in the do-file (everything before the first "label define" command).
 Save in same folder as this do-file.
 Repeat these steps every time REDCap database has been changed.
-do RedcapValuelabel.do
+do RedcapValuelabel.do, nostop
 */
 
 ** Save
