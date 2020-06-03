@@ -20,8 +20,11 @@ shell  `curlpath' 	///
 	--form content=record 	///
 	--form format=csv 		///
 	--form type=flat 		///
-	/// --form filterLogic="[included]='1' and [disease]='1'" /// Optional. Specify which observations to download.
 	`apiurl'
+
+/* Optional. Add filter logic to specify which observations to download.
+--form filterLogic="[included]='1' and [disease]='1'" ///
+*/
 
 *** Convert CSV file to Stata format
 import delimited `outfile', ///
@@ -35,8 +38,8 @@ Rename the do file "RedcapValuelabel.do".
 Delete the first 7 lines in the do-file (everything before the first "label define" command).
 Save in same folder as this do-file.
 Repeat these steps every time REDCap database has been changed.
-*/
 do RedcapValuelabel.do
+*/
 
 ** Save
 save `outfile'.dta, replace
