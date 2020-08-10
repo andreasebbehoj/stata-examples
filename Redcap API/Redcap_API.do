@@ -1,4 +1,8 @@
 ***** Redcap_API.do *****
+/* For a guide on how to use this do file, see
+https://www.ebbehoej.dk/post/automating-data-import-from-redcap/
+*/
+
 version 16
 clear
 file close _all
