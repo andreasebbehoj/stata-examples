@@ -3,7 +3,7 @@
 https://www.ebbehoej.dk/post/automating-data-import-from-redcap/
 */
 
-version 16
+version 15
 clear
 file close _all
 set more off
@@ -13,7 +13,7 @@ file open text using APIKEY_redcap.txt, read text // Txt file containing API key
 file read text token // Store API key as local 'token'
 
 *** cURL Settings (update to match your system and REDCap)
-local curlpath "C:\Windows\System32\curl.exe" // Folder where cURL is installed
+local curlpath "C:/Windows/System32/curl.exe" // Folder where cURL is installed (MacOS: "/usr/bin/curl")
 local apiurl "https://redcap.au.dk/api/" // Link to REDCap database
 local outfile "redcap_export" // Name of the output file
 
