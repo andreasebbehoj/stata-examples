@@ -15,9 +15,9 @@ save `master', replace empty
 foreach x of local files {
     di "`x'" // Display file name
 
-	* 2A) Import each file
-	qui: import delimited "`x'", delimiter(";")  case(preserve) clear // Import csv file
-	qui: gen id = subinstr("`x'", ".csv", "", .)	// Generate id variable (same as file name but without .csv)
+	* 2A) Import each file and generate id var (filename without ".csv")
+	qui: import delimited "`x'", delimiter(";")  case(preserve) clear // <-- Change delimiter() if vars are separated by "," or tab
+	qui: gen id = subinstr("`x'", ".csv", "", .)
 
 	* 2B) Append each file to masterfile
 	append using `master'
@@ -27,5 +27,5 @@ foreach x of local files {
 
 *** 3) Exporting finaldata
 order id, first
-sort id Segment
+sort id
 save "csv_combined.dta", replace
